@@ -20,6 +20,16 @@ const config: Config = {
       fontFamily: {
         poppins: ["Poppins", "sans-serif"],
       },
+      animation: {
+        'loop-scroll': 'loop-scroll 20s linear infinite both',
+        'bounce-slow': 'bounce 3s linear infinite',
+      },
+      keyframes: {
+        'loop-scroll': {
+          from: { transform: 'translateX(-200px)' },
+          to: { transform: 'translateX(100%)' },
+        }
+      }                    
     },
   },
   plugins: [],
