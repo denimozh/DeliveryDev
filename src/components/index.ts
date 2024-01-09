@@ -4,6 +4,7 @@ import Menu from "./Menu";
 import Hero from "./Hero";
 import AboutUs from "./AboutUs";
 import Slider from "./Slider";
+import PopularNow from "./PopularNow";
 
 export{
     Navbar,
@@ -11,5 +12,6 @@ export{
     Menu,
     Hero,
     AboutUs,
-    Slider
+    Slider,
+    PopularNow
 }

@@ -14,7 +14,7 @@ const Hero = () => {
             <div className='flex flex-col basis-1/2'>
                 <p className='text-3xl text-red-600 font-medium'>Welcome to our temporary - a place where every plate 
                 of ramen becomes a real work of art that you can enjoy on your lips.</p>
-                <div className='pt-20'>
+                <div className='pt-24'>
                   <Button text='MAKE AN ORDER' containerStyles='animate-bounce-slow border-l-8 border-b-8 hover:bg-red-500 hover:border-red-800 active:bg-red-700 border-red-700 bg-red-500 py-5 px-6 w-1/3 rounded-full' textStyles='pl-4 pr-4 text-white font-bold' 
                   rightIcon='/menu.svg' iconStyle='p-2 rounded-lg w-8 h-8 bg-red-600' imgStyle='p-1'/>
                 </div>

@@ -1,4 +1,4 @@
-import { Hero, AboutUs, Slider } from '@/components'
+import { Hero, AboutUs, Slider, PopularNow } from '@/components'
 import Image from 'next/image'
 
 export default function Home() {
@@ -7,6 +7,7 @@ export default function Home() {
       <Hero/>
       <Slider/>
       <AboutUs/>
+      <PopularNow/>
     </main>
   )
 }
