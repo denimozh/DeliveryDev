@@ -5,7 +5,7 @@ import Button from './Button'
 const AboutUs = () => {
   return (
     <div className='md:px-20 pt-48 pb-48'>
-      <p className='text-7xl text-red-700 font-bold tracking-wider'>A TASTE OF ASIAN TRADITION <br></br>IN EVERY SERVING</p>
+      <p className='text-7xl text-red-700 font-bold tracking-wider'>A TASTE OF <span className='underline underline-offset-2 text-red-500 '>ASIAN TRADITION</span> <br></br>IN EVERY SERVING</p>
       <div className='flex flex-row'>
         <div className='basis-1/2 pt-24'>
           <p className='text-2xl leading-normal text-red-600 font-medium'>Discover the magic of Asian cuisine with our times. Each serving is filled with authentic flavors and aromas of Asia
