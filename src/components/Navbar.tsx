@@ -20,7 +20,7 @@ const Navbar = () => {
       }
 
   return (
-    <div className='h- text-main-red p-4 pt-6 flex items-center justify-between md:px-20'>
+    <div className=' text-main-red p-4 pt-6 flex items-center justify-between md:px-20 xl:px-40'>
         <div className='md:hidden pr-5'>
             <Menu />
         </div>
@@ -46,14 +46,6 @@ const Navbar = () => {
                     </div>
                 </div>
             </Link>
-            <div className='capitalize text-xl py-4 px-4'>
-                <a href='about'>
-                    <div className='flex flex-row items-center justify-center gap-2' onClick={handleScroll}>
-                        <InfoIcon />
-                        <p>ABOUT</p>
-                    </div>
-                </a>
-            </div>
             <div className='capitalize text-xl py-4 px-4'>
                 <a href='contacts'>
                     <div className='flex flex-row items-center justify-center gap-2'>
