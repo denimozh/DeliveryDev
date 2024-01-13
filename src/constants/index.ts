@@ -257,3 +257,43 @@ export const ramen: Products = [
         ]
     }
 ]
+
+export const singleProduct: Product = 
+    {
+        id: 1,
+        title: 'MISO RAMEN WITH SHRIMP',
+        desc: 'Wheat noodles, shrimp, sweet pepper, baby corn, peas in pods, Curry Sauce, Asian Pesto Sauce, aromatic oil, Tom Yam broth',
+        weight: '645g',
+        img: '/misoShrimp-product.png',
+        price: 24,
+        protiens: 6.2,
+        fat: 8.3,
+        carbs: 28.6,
+        calories: 213.7,
+        addOn:[
+            {
+                title: "onion",
+                additionalPrice: 0
+            },
+            {
+                title: "pepper",
+                additionalPrice: 1
+            },
+            {
+                title: "greenery",
+                additionalPrice: 2
+            },
+            {
+                title: "sesame",
+                additionalPrice: 1
+            },
+            {
+                title: "bread",
+                additionalPrice: 1
+            },
+            {
+                title: "shrimp",
+                additionalPrice: 2
+            }
+        ]
+    }
