@@ -4,18 +4,21 @@ import React, {useState} from 'react'
 import {  singleProduct } from '@/constants'
 import Button from '@/components/Button'
 import { Checkbox } from '@mui/material';
+import { red } from '@mui/material/colors';
 
-
-const label = { inputProps: { 'aria-label': 'Checkbox demo' } };
-let price = singleProduct.price;
 
 const SingleProduct = () => {
-  const [isSelected, setIsSelected] = useState(false);
 
-  const handleClick = (value: number) => {
-    setIsSelected(!isSelected);
-    if (isSelected == true){
-      price = price + value
+  const label = { inputProps: { 'aria-label': 'Checkbox demo' } };
+  const [price, setPrice] = useState(singleProduct.price);
+  const [clicked, setClicked] = useState(false);
+
+  const handleClick = (addPrice: number) => {
+    setClicked(!clicked)
+    if(clicked == true){
+      setPrice(price - addPrice)
+    } else {
+      setPrice(price + addPrice)
     }
   }
 
@@ -51,7 +54,7 @@ const SingleProduct = () => {
         <div className='flex flex-row items-center gap-16 pb-16'>
           <Button text='ADD TO CART' containerStyles='w-fit border-l-2 border-b-4 hover:bg-red-500 hover:border-red-800 active:bg-red-700 border-red-700 bg-red-500 py-5 px-7 rounded-full' textStyles='pl-4 pr-4 text-white font-bold' 
                   rightIcon='/menu.svg' iconStyle='p-2 rounded-lg w-8 h-8 bg-red-600' imgStyle='p-1'/>
-          <p className='text-3xl text-red-600 font-bold'>${singleProduct.price}</p>
+          <p className='text-3xl text-red-600 font-bold'>${price}</p>
         </div>
         <div className='border-2 border-red-600'>
           <div className='flex flex-row'>
@@ -67,8 +70,8 @@ const SingleProduct = () => {
           </div>
           <div className='grid grid-cols-3 gap-10 p-10'>
             {singleProduct.addOn?.map(option =>(
-              <div className='flex items-center'>
-                <Checkbox {...label} onClick={handleClick(option.additionalPrice)}/>
+              <div className='flex items-center' >
+                <Checkbox {...label} onClick={() => handleClick(option.additionalPrice)} sx={{'& .MuiSvgIcon-root': { fontSize: 28 }, color: red[800], '&.Mui-checked': {color: red[600],},}}/>
                 <p className='text-lg text-red-500'>{option.title}</p>
                 <div className='flex pl-8 text-lg text-red-600'>
                   +{option.additionalPrice}$
