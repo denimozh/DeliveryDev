@@ -10,3 +10,12 @@ export interface ButtonProps {
     iconStyle?: string,
     imgStyle?: string
 }
+
+export type MenuType = {
+  id: string;
+  slug: string;
+  title: string;
+  description: string;
+  image: string;
+  color?: string;
+}[];
