@@ -3,7 +3,6 @@ import { PrismaClient } from "@prisma/client";
 import { NextRequest, NextResponse } from "next/server"
 
 
-
 //fetch all the categories
 export const GET = async(req:NextRequest) =>{
     const {searchParams} = new URL(req.url)
@@ -13,7 +12,7 @@ export const GET = async(req:NextRequest) =>{
         const products = await prisma.product.findMany({
             where: {
                 ...(cat ? {catSlug:cat} : {isFeatured: true })
-            }
+            },
         });
 
         return new NextResponse(JSON.stringify(products), {status:200})

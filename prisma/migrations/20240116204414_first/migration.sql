@@ -20,7 +20,7 @@ CREATE TABLE "Product" (
     "image" TEXT NOT NULL,
     "price" DECIMAL(65,30) NOT NULL,
     "isFeatured" BOOLEAN NOT NULL DEFAULT false,
-    "options" JSONB[],
+    "addOns" JSONB[],
     "catSlug" TEXT NOT NULL,
 
     CONSTRAINT "Product_pkey" PRIMARY KEY ("id")
