@@ -29,7 +29,12 @@ model Product{
   image String
   price Decimal
   isFeatured Boolean @default(false)
-  options Json[]
+  addOns Json[]
+  protiens Decimal
+  fat Decimal
+  carbs Decimal
+  calories Decimal
+  weight Decimal
   category Category @relation(fields: [catSlug], references: [slug])
   catSlug String
 }
