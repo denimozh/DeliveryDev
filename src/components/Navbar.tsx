@@ -5,10 +5,9 @@ import { Menu } from '.'
 import Link from 'next/link'
 import MenuIcon from '@mui/icons-material/Menu';
 import LocalShippingIcon from '@mui/icons-material/LocalShipping';
-import InfoIcon from '@mui/icons-material/Info';
 import EmailIcon from '@mui/icons-material/Email';
-import PersonIcon from '@mui/icons-material/Person';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
+import UserLinks from './UserLinks';
 
 const Navbar = () => {
     const handleScroll = () => {
@@ -56,17 +55,13 @@ const Navbar = () => {
             </div>
         </div>
         <div className=''>
-            <div className='flex flex-row gap-10 invisible lg:visible'>
-                <Link href={'/login'}>
-                    <div className='flex items-center gap-2 border-2 rounded-full p-2  border-red-500 hover:bg-red-600'>                
-                        <PersonIcon sx={{ fontSize: 45 }} className='text-main-red hover:text-orange-100'/>
-                    </div>
-                </Link>
+            <div className='flex flex-row gap-10 invisible lg:visible'>               
                 <Link href={'/cart'}>
                     <div className='flex items-center gap-2 border-2 rounded-full p-2  border-red-500 hover:bg-red-600'>                
                             <ShoppingCartIcon sx={{ fontSize: 45 }} className='text-main-red hover:text-orange-100'/>
                     </div>
                 </Link>
+                <UserLinks />
             </div>
         </div>
     </div>
