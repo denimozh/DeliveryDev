@@ -33,3 +33,13 @@ export type ProductType = {
   weight: number;
   addOn: {title: string; additionalPrice: number}
 }
+
+export type OrderType = {
+  id: string;
+  userEmail: string;
+  price: number;
+  products: object[];
+  status: string;
+  createdAt: Date;
+  intent_id?: String;
+};

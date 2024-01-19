@@ -10,7 +10,7 @@
 
 */
 -- AlterTable
-ALTER TABLE "Product" DROP COLUMN "options",
+ALTER TABLE "Product" DROP COLUMN "addOns",
 ADD COLUMN     "addOns" JSONB[],
 ADD COLUMN     "calories" DECIMAL(65,30) NOT NULL,
 ADD COLUMN     "carbs" DECIMAL(65,30) NOT NULL,
