@@ -8,8 +8,11 @@ import LocalShippingIcon from '@mui/icons-material/LocalShipping';
 import EmailIcon from '@mui/icons-material/Email';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import UserLinks from './UserLinks';
+import { useSession } from 'next-auth/react';
+
 
 const Navbar = () => {
+    const {status} = useSession()
     const handleScroll = () => {
         const nextSection = document.getElementById("about");
     
@@ -37,14 +40,25 @@ const Navbar = () => {
                     </div>
                 </div>
             </Link>
-            <Link href={"/delivery"}>
-                <div className='capitalize text-xl py-4 px-4'>
-                    <div className='flex flex-row items-center justify-center gap-2'>
-                        <LocalShippingIcon />
-                        <p>DELIVERY</p>
+            {status === "authenticated" ? (
+                <Link href={"/orders"}>
+                    <div className='capitalize text-xl py-4 px-4'>
+                        <div className='flex flex-row items-center justify-center gap-2'>
+                            <LocalShippingIcon />
+                            <p>DELIVERY</p>
+                        </div>
                     </div>
-                </div>
-            </Link>
+                </Link>
+            ) : (
+                <Link href={"/login"}>
+                    <div className='capitalize text-xl py-4 px-4'>
+                        <div className='flex flex-row items-center justify-center gap-2'>
+                            <LocalShippingIcon />
+                            <p>DELIVERY</p>
+                        </div>
+                    </div>
+                </Link>
+            )}
             <div className='capitalize text-xl py-4 px-4'>
                 <a href='contacts'>
                     <div className='flex flex-row items-center justify-center gap-2'>
