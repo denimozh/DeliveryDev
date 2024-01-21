@@ -5,9 +5,21 @@ import {  singleProduct } from '@/constants'
 import Button from '@/components/Button'
 import { Checkbox } from '@mui/material';
 import { red } from '@mui/material/colors';
+import { ProductType } from '@/Types';
 
+const getData = async (id:string) => {
+  const res = await fetch(`http://localhost:3000/api/products/${id}`, {cache:"no-store"})
 
-const SingleProduct = () => {
+  if(!res.ok){
+    throw new Error("Failed!");
+  }
+
+  return res.json()
+}
+
+const SingleProduct = async ({params}:{params:{id:string}}) => {
+
+  const singleProduct : ProductType = await getData(params.id)
 
   const label = { inputProps: { 'aria-label': 'Checkbox demo' } };
   const [price, setPrice] = useState(singleProduct.price);
@@ -26,7 +38,7 @@ const SingleProduct = () => {
     <div className='flex flex-row gap-10 xl:px-40 py-16'>
       <div className='basis-1/2 flex-col border-2 border-red-500'>
         <div className='flex items-center justify-center p-20'>
-          <img src={singleProduct.img} className=' pb-14 scale-125 pt-10'/>
+          <img src={singleProduct.image} className=' pb-14 scale-125 pt-10'/>
         </div>
         <div className='flex flex-row border-t-2 border-red-500'>
           <div className='basis-1/4  border-red-500 p-4'>
@@ -49,7 +61,7 @@ const SingleProduct = () => {
       </div>
       <div className='basis-1/2'>
         <p className='text-5xl text-red-600 font-medium underline decoration-4 underline-offset-[28px] pb-16'>{singleProduct.title}</p>
-        <p className='text-xl text-red-700'>{singleProduct.desc}</p>
+        <p className='text-xl text-red-700'>{singleProduct.description}</p>
         <p className='py-8 text-2xl text-red-700'>Approx Weight: {singleProduct.weight}</p>
         <div className='flex flex-row items-center gap-16 pb-16'>
           <Button text='ADD TO CART' containerStyles='w-fit border-l-2 border-b-4 hover:bg-red-500 hover:border-red-800 active:bg-red-700 border-red-700 bg-red-500 py-5 px-7 rounded-full' textStyles='pl-4 pr-4 text-white font-bold' 
@@ -69,7 +81,7 @@ const SingleProduct = () => {
             </div>
           </div>
           <div className='grid grid-cols-3 gap-10 p-10'>
-            {singleProduct.addOn?.map(option =>(
+            {singleProduct.addOn.map(option =>(
               <div className='flex items-center' >
                 <Checkbox {...label} onClick={() => handleClick(option.additionalPrice)} sx={{'& .MuiSvgIcon-root': { fontSize: 28 }, color: red[800], '&.Mui-checked': {color: red[600],},}}/>
                 <p className='text-lg text-red-500'>{option.title}</p>

@@ -11,12 +11,10 @@ const UserLinks = () => {
     <div>
         {status ==="authenticated" ? (
             <div className="flex flex-row gap-8 items-center">
-                <Link href={'/orders'}>
-                    <div className='flex items-center gap-2 border-2 rounded-full p-2  border-red-500 hover:bg-red-500'>                
-                        <InfoIcon sx={{ fontSize: 45 }} className='text-red-400 hover:text-orange-100'/>
-                    </div>
-                </Link>      
-                <span onClick={()=>signOut()} className="cursor-pointer">Logout</span>     
+                  
+                <div className='flex items-center gap-2 border-2 rounded-full p-2  border-red-600 hover:bg-red-400 cursor-pointer' onClick={()=>signOut()}>                
+                    <PersonIcon sx={{ fontSize: 45 }} className='text-red-400 hover:text-orange-100'/>
+                </div>
              </div>
         ) : (
             <Link href={'/login'}>
