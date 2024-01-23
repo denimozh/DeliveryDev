@@ -69,8 +69,8 @@ const SingleProduct = async ({params}:{params:{id:string}}) => {
               <p className='text-xl'>Mochi</p>
             </div>
           </div>
-          <div className='grid grid-cols-3 gap-10 p-10'>
-            <Price product={singleProduct}/>
+          <div className=''>
+            <Price product={singleProduct} price={singleProduct.price}/>
           </div>
         </div>
       </div>

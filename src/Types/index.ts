@@ -31,7 +31,7 @@ export type ProductType = {
   carbs: number;
   calories: number;
   weight: number;
-  addOn: {title: string; additionalPrice: number}[]
+  addOns: {title: string; additionalPrice: number}[]
 }
 
 export type OrderType = {
