@@ -17,6 +17,15 @@ const Price = ({product} : {product: ProductType}) => {
   const {addToCart} = useCartStore();
 
   useEffect(() => {
+    useCartStore.persist.rehydrate()
+  }, [])
+
+  const handleClick = (index:number) => {
+    !setChecked
+    setSelected(index)
+  }
+
+  useEffect(() => {
     setTotal(
         checked ? product.price + product.addOns[selected].additionalPrice : product.price - product.addOns[selected].additionalPrice
     );
@@ -53,7 +62,7 @@ const Price = ({product} : {product: ProductType}) => {
           <div className='grid grid-cols-3 gap-15 p-10'>
             {product.addOns?.map((addon, index) =>(
               <div className='flex items-center' >
-                <Checkbox {...label}  onClick={() => {setSelected(index); !setChecked}} sx={{'& .MuiSvgIcon-root': { fontSize: 28 }, color: red[800], '&.Mui-checked': {color: red[600],},}}/>
+                <Checkbox {...label}  onClick={() => handleClick(index)} sx={{'& .MuiSvgIcon-root': { fontSize: 28 }, color: red[800], '&.Mui-checked': {color: red[600],},}}/>
                 <p className='text-lg text-red-500'>{addon.title}</p>
                 <div className='flex pl-8 text-lg text-red-600'>
                   +{addon.additionalPrice}$

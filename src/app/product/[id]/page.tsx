@@ -6,6 +6,7 @@ import { Checkbox } from '@mui/material';
 import { red } from '@mui/material/colors';
 import { ProductType } from '@/Types';
 import Price from '@/components/Price';
+import DeleteButton from '@/components/DeleteButton';
 
 const getData = async (id:string) => {
   const res = await fetch(`http://localhost:3000/api/products/${id}`, {cache:"no-store"})
@@ -21,10 +22,8 @@ const SingleProduct = async ({params}:{params:{id:string}}) => {
 
   const singleProduct : ProductType = await getData(params.id)
 
-
-
   return (
-    <div className='flex flex-row gap-10 xl:px-40 py-16'>
+    <div className='flex flex-row gap-10 xl:px-40 py-16 relative'>
       <div className='basis-1/2 flex-col border-2 border-red-500'>
         <div className='flex items-center justify-center p-20'>
           <img src={singleProduct.image} className=' pb-14 scale-125 pt-10'/>
@@ -53,6 +52,9 @@ const SingleProduct = async ({params}:{params:{id:string}}) => {
         <p className='text-xl text-red-700'>{singleProduct.description}</p>
         <p className='py-8 text-2xl text-red-700'>Approx Weight: {singleProduct.weight}g</p>
         <Price product={singleProduct}/>
+      </div>
+      <div className='pt-10'>
+        <DeleteButton id={singleProduct.id}/>
       </div>
     </div>
   )
