@@ -1,9 +1,13 @@
 "use client"
 import Button from '@/components/Button'
 import { useCartStore } from '@/utils/store'
-import React from 'react'
+import React, { useEffect } from 'react'
 
 const CartPage = () => {
+
+  useEffect(() => {
+    useCartStore.persist.rehydrate()
+  }, [])
 
   const {products, totalItems, totalPrice, removeFromCart} = useCartStore()
   return (
