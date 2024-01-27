@@ -1,13 +1,41 @@
 "use client"
 import Button from '@/components/Button'
 import { useCartStore } from '@/utils/store'
+import { useSession } from 'next-auth/react'
+import { useRouter } from 'next/navigation'
 import React, { useEffect } from 'react'
 
 const CartPage = () => {
 
+  const {data:session} = useSession()
+  const router = useRouter()
+
   useEffect(() => {
     useCartStore.persist.rehydrate()
   }, [])
+
+  const handleChckout = async () => {
+    if(!session){
+      router.push("./")
+    } else {
+      try {
+        const res = await fetch("http://localhost:3000/api/orders", {
+          method:"POST",
+          headers:{"Content-Type":"application/json"},
+          body: JSON.stringify({
+            price: totalPrice,
+            products,
+            status: "Not paid!",
+            userEmail: session.user.email,
+          }),
+        });
+        const data = await res.json()
+        router.push(`/pay/${data.id}`)
+      } catch (error) {
+        
+      }
+    }
+  }
 
   const {products, totalItems, totalPrice, removeFromCart} = useCartStore()
   return (
@@ -42,7 +70,7 @@ const CartPage = () => {
         </div>
         <div className='flex justify-center pt-10'>
           <Button text='CHECKOUT' containerStyles='w-1/2 border-l-2 border-b-4 hover:bg-red-500 hover:border-red-800 active:bg-red-700 border-red-700 bg-red-500 py-5 px-7 rounded-full' textStyles='pl-4 pr-4 text-white font-bold' 
-                  rightIcon='/menu.svg' iconStyle='p-2 rounded-lg w-8 h-8 bg-red-600' imgStyle='p-1'/>
+                  rightIcon='/menu.svg' iconStyle='p-2 rounded-lg w-8 h-8 bg-red-600' imgStyle='p-1' handleClick={handleChckout}/>
         </div>
       </div>
     </div>
