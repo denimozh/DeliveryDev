@@ -5,6 +5,7 @@ const stripe = require("stripe")(process.env.STRIPE_SECRET_KEY);
 
 export const POST = async({ params }: {params: { orderId: string}}) => {
     const { orderId } = params;
+    
 
     const order = await prisma.order.findUnique({
         where: {
@@ -15,7 +16,7 @@ export const POST = async({ params }: {params: { orderId: string}}) => {
     if(order){
         const paymentIntent = await stripe.paymentIntents.create({
             amount: 100 * 100,
-            currency: "gbp",
+            currency: "usd",
             
             automatic_payment_methods: {
               enabled: true,
@@ -24,12 +25,12 @@ export const POST = async({ params }: {params: { orderId: string}}) => {
 
         await prisma.order.update({
             where:{
-                id:orderId
+                id:orderId,
             },
-            data:{intent_id:paymentIntent.id}
+            data:{intent_id: paymentIntent.id}
         })
 
-        return new NextResponse(JSON.stringify({clientSecret:paymentIntent.clientSecret}), {status:200})
+        return new NextResponse(JSON.stringify({clientSecret:paymentIntent.client_secret}), {status:200})
     }else{
         return new NextResponse(JSON.stringify({message:"Order not found!"}), {status:404});
     }
