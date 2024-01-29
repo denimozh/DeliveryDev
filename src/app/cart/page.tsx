@@ -14,7 +14,7 @@ const CartPage = () => {
     useCartStore.persist.rehydrate()
   }, [])
 
-  const handleChckout = async () => {
+  const handleCheckout = async () => {
     if(!session){
       router.push("./")
     } else {
@@ -70,7 +70,7 @@ const CartPage = () => {
         </div>
         <div className='flex justify-center pt-10'>
           <Button text='CHECKOUT' containerStyles='w-1/2 border-l-2 border-b-4 hover:bg-red-500 hover:border-red-800 active:bg-red-700 border-red-700 bg-red-500 py-5 px-7 rounded-full' textStyles='pl-4 pr-4 text-white font-bold' 
-                  rightIcon='/menu.svg' iconStyle='p-2 rounded-lg w-8 h-8 bg-red-600' imgStyle='p-1' handleClick={handleChckout}/>
+                  rightIcon='/menu.svg' iconStyle='p-2 rounded-lg w-8 h-8 bg-red-600' imgStyle='p-1' handleClick={handleCheckout}/>
         </div>
       </div>
     </div>
