@@ -12,10 +12,11 @@ const PayPage = ({ params } : { params: { id:string } }) => {
 
   useEffect(() => {
     const makeRequest = async () => {
+      console.log("does make request work");
       try {
         const res = await fetch(`http://localhost:3000/api/create-intent/${id}`, 
           {
-            method:'POST'
+            method:"POST",
           }
         );
         const data = await res.json()
