@@ -10,4 +10,8 @@
 
 body{
   background-color: #EAE3DC;
+  overflow-x: hidden;
+  overflow-y: scroll; /* Add the ability to scroll */
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
 }
