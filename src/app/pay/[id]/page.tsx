@@ -13,7 +13,7 @@ const PayPage = ({ params } : { params: { id:string } }) => {
   useEffect(() => {
     const makeRequest = async () => {
       try {
-        const res = await fetch(`https://ramen-dev.vercel.app/api/create-intent/${id}`, 
+        const res = await fetch(`http://localhost:3000/api/create-intent/${id}`, 
           {
             method:"POST",
           }
