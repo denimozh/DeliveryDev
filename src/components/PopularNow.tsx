@@ -19,7 +19,7 @@ const PopularNow = async () => {
       <p className='text-red-700 text-7xl font-bold'>POPULAR NOW</p>
       <div className='grid grid-cols-1 md:grid-cols-3 lg:grid-cols-3 pt-20 gap-8'>
         {featuredProducts.map((item) => (
-          <div className='group border-red-500 border-2 hover:bg-[#E8D8C7] hover:border-l-8 hover:border-b-8 hover:rounded-lg'>
+          <div key={item.id} className='group border-red-500 border-2 hover:bg-[#E8D8C7] hover:border-l-8 hover:border-b-8 hover:rounded-lg'>
             <div className=' p-4 '>
               <div className='flex justify-center items-center pt-10 pb-5 group-hover:animate-spin-slow'>
                 <img src={`./${item.image}`} className='w-[350px]'/>

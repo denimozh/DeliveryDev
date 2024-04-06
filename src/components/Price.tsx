@@ -61,7 +61,7 @@ const Price = ({product} : {product: ProductType}) => {
           </div>
           <div className='grid grid-cols-3 gap-15 p-10'>
             {product.addOns?.map((addon, index) =>(
-              <div className='flex items-center' >
+              <div key={addon.title} className='flex items-center' >
                 <Checkbox {...label}  onClick={() => handleClick(index)} sx={{'& .MuiSvgIcon-root': { fontSize: 28 }, color: red[800], '&.Mui-checked': {color: red[600],},}}/>
                 <p className='text-lg text-red-500'>{addon.title}</p>
                 <div className='flex pl-8 text-lg text-red-600'>
