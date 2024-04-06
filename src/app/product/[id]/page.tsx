@@ -9,7 +9,7 @@ import Price from '@/components/Price';
 import DeleteButton from '@/components/DeleteButton';
 
 const getData = async (id:string) => {
-  const res = await fetch(`http://localhost:3000/api/products/${id}`, {cache:"no-store"})
+  const res = await fetch(`https://ramen-dev.vercel.app/api/products/${id}`, {cache:"no-store"})
 
   if(!res.ok){
     throw new Error("Failed!");

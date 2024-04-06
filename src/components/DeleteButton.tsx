@@ -19,7 +19,7 @@ const DeleteButton = ({id}:{id:string}) => {
   }
 
   const handleDelete = async () => {
-    const res = await fetch(`http:localhost:3000/api/products/${id}`, {
+    const res = await fetch(`https://ramen-dev.vercel.app/api/products/${id}`, {
         method:"DELETE"
     })
 
